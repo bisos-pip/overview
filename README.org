@@ -1,0 +1,107 @@
+#+title: bisos.overview: The Overview Repo of the bisos-pip gitGroup
+#+DATE: <2026-11-15 Sun>
+#+AUTHOR: Mohsen BANAN
+#+OPTIONS: toc:4
+
+#+BEGIN: b:org:pypi:readme/topControls :pkgName "overview" :comment "basic"
+
+|----------------------+------------------------------------------------------------------|
+| ~Blee Panel Controls~: | [[elisp:(show-all)][Show-All]] : [[elisp:(org-shifttab)][Overview]] : [[elisp:(progn (org-shifttab) (org-content))][Content]] : [[elisp:(delete-other-windows)][(1)]] : [[elisp:(progn (save-buffer) (kill-buffer))][S&Q]] : [[elisp:(save-buffer)][Save]]  : [[elisp:(kill-buffer)][Quit]]  : [[elisp:(bury-buffer)][Bury]] |
+| ~Panel Links~:         | [[file:./py3/panels/bisos.overview/_nodeBase_/fullUsagePanel-en.org][Repo Blee Panel]] --  [[file:/bisos/git/auth/bxRepos/bisos-pip/overview/py3/panels/bisos.overview/_nodeBase_/fullUsagePanel-en.org][Blee Panel]]                                   |
+| ~See Also~:            | [[https://pypi.org/project/bisos.overview][At PYPI]] : [[https://github.com/bisos-pip/pycs][bisos.PyCS]]                                             |
+|----------------------+------------------------------------------------------------------|
+
+#+END:
+
+* Overview
+
+/bisos.overview/ is the *overview repo* of the bisos-pip gitGroup. A gitGroup is a collection of
+git repos, independent of the git server that hosts them (a GitHub organization, a GitLab group);
+bisos-pip is the gitGroup of the BISOS pip packages, one repo each under =bisos-pip/=. Besides its
+member repos, each gitGroup has an overview repo that drives what is common to all of them.
+
+Today that is the gitGroup's *consistency rules*: what every member repo must have, checked and
+applied with the gitGroup engine of [[https://github.com/bisos-pip/gitist][bisos.gitist]].
+
+* Table of Contents     :TOC:
+- [[#overview][Overview]]
+- [[#part-of-bisos--bystar-internet-services-operating-system][Part of BISOS — ByStar Internet Services Operating System]]
+- [[#the-bisos-pip-gitgroup-consistency-rules][The bisos-pip gitGroup Consistency Rules]]
+- [[#installation][Installation]]
+  - [[#with-pip][With pip]]
+  - [[#with-pipx][With pipx]]
+- [[#documentation-and-blee-panels][Documentation and Blee-Panels]]
+- [[#support][Support]]
+
+* Part of BISOS — ByStar Internet Services Operating System
+
+Layered on top of Debian, *BISOS* (By* Internet Services Operating System)
+is a unified and universal framework for developing both internet services and
+software-service continuums that use internet services. See
+[[https://github.com/bxGenesis/start][Bootstrapping ByStar, BISOS and Blee]]
+for information about getting started with BISOS.
+
+*BISOS* is a foundation for *The Libre-Halaal ByStar Digital Ecosystem* which
+is described as a cure for losses of autonomy and privacy in a book titled:
+[[https://github.com/bxplpc/120033][Nature of Polyexistentials]]
+
+/bisos.overview/ is part of BISOS. It is meaningful only with the bisos-pip repos at hand
+(=/bisos/git/bxRepos/bisos-pip/=).
+
+* The bisos-pip gitGroup Consistency Rules
+
+=py3/bin/bisos-pip_gitGroup.pcs= is planted on bisos.gitist's =gitGroup-seed.cs=. It declares the
+gitGroup: its base (=/bisos/git/bxRepos/bisos-pip=; every git repo there is a member) and its rules:
+
+| Rule             | Every member repo                                                      |
+|------------------+------------------------------------------------------------------------|
+| =.gitignore=     | equals the BISOS template (=gitignore/emacs+py+tex=)                   |
+| =.gitattributes= | equals the BISOS template (=gitattributes/py=)                         |
+| =generated=      | does not track =py3/README.rst= and =py3/_description.org= (generated) |
+
+The templates are the ones =bx-gitRepos -i baseUpdateDotIgnore= copies, under
+=/bisos/apps/defaults/begin/templates/moded/git/=; =bx-gitRepos= stays beside this.
+
+#+begin_src bash
+bisos-pip_gitGroup.pcs -i gitGroup_status                        # read-only: each member, each rule
+bisos-pip_gitGroup.pcs -i gitGroup_diff <repo> .gitignore        # template -> the member's file
+bisos-pip_gitGroup.pcs -i gitGroup_update                        # writes missing and stale files
+bisos-pip_gitGroup.pcs -i gitGroup_update --replaceDrift=true    # and drifted ones
+#+end_src
+
+A member's file is =ok=, =missing=, =stale= (an earlier version of the template), =drift= (differs,
+not declared) or =custom= (differs, declared as an exception in the plant; none in bisos-pip). The
+update writes files only: it never stages or commits, and prints the =git rm --cached= lines for
+tracked generated files.
+
+* Installation
+
+The sources for the bisos.overview pip package are maintained at:
+https://github.com/bisos-pip/overview.
+
+** With pip
+
+#+begin_src bash
+pip install bisos.overview
+#+end_src
+
+** With pipx
+
+#+begin_src bash
+pipx install bisos.overview
+#+end_src
+
+bisos.gitist provides the =gitGroup-seed.cs= that the plant runs.
+
+* Documentation and Blee-Panels
+
+bisos.overview is part of ByStar Digital Ecosystem [[http://www.by-star.net]].
+
+Its Blee-Panel is =py3/panels/bisos.overview/_nodeBase_/fullUsagePanel-en.org=.
+
+* Support
+
+For support, criticism, comments and questions; please contact the
+author/maintainer\\
+[[http://mohsen.1.banan.byname.net][Mohsen Banan]] at:
+[[http://mohsen.1.banan.byname.net/contact]]

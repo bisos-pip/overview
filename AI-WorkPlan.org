@@ -1,0 +1,321 @@
+#+title: Work Plan
+#+DATE: <2026-06-10 Wed 13:54>
+#+AUTHOR: Mohsen BANAN
+#+OPTIONS: toc:4
+#+TAGS: me ai aiAndMe
+
+# Provenance (installed once by aiActivity.cs --- not regenerated):
+#   Date:      2026-11-15T00:26:16+00:00
+#   User:      bystar
+#   Templates: /bisos/apps/defaults/ai-templates
+#   Command:   /bisos/venv/py3/devbin/aiActivity.cs -i initiate --activity=bisos-pip
+
+####+BEGIN: b:ai:workflow/driver
+*  [[elisp:(revert-buffer)][revert-buffer]] | [[elisp:(toggle-read-only)][read/wr]] | [[elisp:(show-all)][Show-All]]  [[elisp:(org-shifttab)][Overview]]  [[elisp:(progn (org-shifttab) (org-content))][Content]] | [[elisp:(delete-other-windows)][(1)]] | [[elisp:(progn (save-buffer) (kill-buffer))][S&Q]] [[elisp:(save-buffer)][Save]] [[elisp:(kill-buffer)][Quit]] [[elisp:(bury-buffer)][Bury]] [[elisp:(magit)][Magit]]
+*  [[elisp:(org-cycle)][AI Workflow Driver :: /bx- commands]]    *After |S|: submitted*
+  newStart :: [[elisp:(blee:bnsm:panel-goto "/bisos/panels/bisos-core/bisos-pip/bisos.aiActivity/newStart/_nodeBase_")][Panel]] | [[bashRun:vscodeClaude-assemble.cs -i fullCheck][setup-check]] | [[bashRun:vscodeClaude-assemble.cs -i fullUpdate][setup]] | [[elisp:(b:vscode/init)][partner-init]] | [[elisp:(b:vscode/partnerShow)][partner-show]] | [[aiActivity:session-start][session-start]]
+  VS Code  :: [[elisp:(b:vscode/fileOpen)][Visit]] | [[elisp:(b:vscode/rootOpen)][root-window]] | [[elisp:(b:vscode:claude/dispatch)][Transient]]
+  Session  :: [[elisp:(b:vscode:claude/sessionSelect)][select-session]] | [[aiActivity:session-start][session-start]] | [[aiActivity:session-report][session-report]]  *|S|*  [[aiActivity:S=session-start][session-start]]
+  Activity :: [[aiActivity:activity-reach][activity-reach]] | [[aiActivity:activity-report][activity-report]]  *|S|*  [[aiActivity:S=activity-reach][activity-reach]]
+  Read     :: [[aiActivity:status-read][status-read]] | [[aiActivity:archive-read][archive-read]] | [[aiActivity:ai-outputs][ai-outputs]]  *|S|*  [[aiActivity:S=status-read][status-read]] | [[aiActivity:S=archive-read][archive-read]] | [[aiActivity:S=ai-outputs][ai-outputs]]
+  Work     :: [[aiActivity:todo-do][todo-do]] | [[aiActivity:todo-done][todo-done]]  *|S|*  [[aiActivity:S=todo-do][todo-do]] | [[aiActivity:S=todo-done][todo-done]]
+  Record   :: [[aiActivity:status-update][status-update]] | [[aiActivity:archive-update][archive-update]]  *|S|*  [[aiActivity:S=status-update][status-update]] | [[aiActivity:S=archive-update][archive-update]]
+  Git      :: [[aiActivity:git-commit-msg][git-commit-msg]] | [[aiActivity:git-commit-walk][git-commit-walk]]  *|S|*  [[aiActivity:S=git-commit-msg][git-commit-msg]]
+  Close    :: [[aiActivity:git-uncommitted-list][git-uncommitted-list]] | [[aiActivity:session-verify][session-verify]]  *|S|*  [[aiActivity:S=git-uncommitted-list][git-uncommitted-list]] | [[aiActivity:S=session-verify][session-verify]]
+
+####+END:
+
+####+BEGIN: b:ai:file/particulars
+* AI Working Context
+  Working Directory: /bisos/git/auth/bxRepos/bisos-pip/overview
+  File: /bisos/git/auth/bxRepos/bisos-pip/overview/AI-WorkPlan.org
+  Activity: bisos-pip
+  Companion Docs: AI-WORKFLOW.org, AI-Activity.org, AI-DevStatus.org
+####+END:
+
+This Work Plan file drives the AI collaborative development.
+Interactions are broken down into "Stages". Each Stage has a set
+of TODOs that I work with Claude to accomplish.
+
+Note to a fresh Claude: read this file together with AI-WORKFLOW.org,
+AI-Activity.org and AI-DevStatus.org to orient yourself. The =<<Context Confirmation>>=
+TODO below is the standard first step, or use =/bx-session-start= as the automated equivalent.
+TODOs tagged =:ai:= are assigned to Claude. After completing a TODO, summarize results
+under =----- Results: ------= and mark it DONE.
+
+
+* Overview, Purpose and Context
+
+<<Overview>>
+
+Description of the specifics of this particular AI-Activity comes here.
+
+
+* Stage 0: Confirm AI's Understanding of This Repo's Context
+
+Goal: Confirm AI's understanding of the context and capture that in [[Context Confirmation]] TODO.
+
+
+* Stage 0 TODOs
+** +
+** LOOP [#A] <<Context Confirmation>> for AI (typically triggered by /bx-session-start) :aiAndMe:
+SCHEDULED: <2026-06-09 Tue>
+Must be repeated each time a new Claude instance is started here.
+Based on the series of files starting from CLAUDE.md in this repo,
+describe succinctly what you have understood.
+Enumerate explicitly which files you have imported and which you have considered.
+Prompt the user to confirm that the desired/appropriate model (/model) is being used for this project.
+Since this is to be repeated, leave the todo tag as LOOP.
+** -
+
+* Stage 1: Misc Place Holder 
+
+<<Stage 1>>
+
+Goal: A placeholder for misc ideas and TODOs
+
+
+* Stage 1 TODOs (Misc)
+** +
+** TODO [#C] A Placeholder
+** -
+
+
+* Stage 2: Role and Purpose of the <<overview repo>> in [[gitGroup]]
+
+<<Stage 2>>
+
+Goal: Establish needed documentation and conventions for maintaining overview repos
+in gitGroups.
+
+
+* Stage 2 TODOs  -- In Progress
+** +
+** TODO [#A] <<2.1>> Use this bisos-pip gitGroup to drive the common aspects related to the gitGroup :aiAndMe:
+SCHEDULED: <2026-11-15 Sun 00:34>
+:PROPERTIES:
+:ORIGIN: Mohsen
+:IMPORTANCE: low
+:REPO: this
+:BASE: this
+:FOUND: <2026-11-15 Sun 00:35>
+:END:
+For this gitGroup for now we just use its aiActivity to drive common work
+----- Results: ------
+** -
+
+* Stage 3: Capture the concept of <<gitGroup>> and gitSubGroup in bisos.gitist and elsewhere
+
+<<Stage 3>>
+
+Goal: The concept of gitGroup is that of abstracting collections of hierarchical git repo collections
+      independent of the git-server in use.
+
+      Github has "Organizations", Gitlab has "group and subGroup"
+      ByStar has "gitGroup"
+
+gitGroup's mapping to github is as follows:
+   - The .github repo is created and a symlink to it exists as "gitGroup"
+     Currently that is being done as _github or profile. Those need to become gitGroup
+
+gitGroup's mapping to gitlab is as follows:
+   - Needs to be figured out
+
+The gitGroup repo typically has just a description, which can be machine generated.
+   
+In addition to the gitGroup repo, each gitGroup also has an [[overview repo]] which is used to drive the
+common aspects of the gitGroup
+
+* Stage 3 TODOs  -- In Progress
+** +
+** TODO [#A] <<3.1>> Set things up for this repo as an example :aiAndMe:
+SCHEDULED: <2026-11-15 Sun 00:48>
+:PROPERTIES:
+:ORIGIN: Mohsen
+:IMPORTANCE: Medium
+:REPO: this
+:BASE: this
+:FOUND: <2026-11-15 Sun 00:49>
+:END:
+----- Results: ------
+** -
+
+* Stage 4: For pip packages we need to 
+
+<<Stage 4>>
+
+Goal: Automate the process of recognizing which pip packages at repo level but
+      have not been locally reinstalled and which pip packages need to be
+      pushed to pypi.
+
+* Stage 4 TODOs  -- In Progress
+** +
+** TODO [#A] <<4.1>> Decide which utilities need to be built and where they belong  :aiAndMe:
+SCHEDULED: <2026-11-15 Sun 00:48>
+:PROPERTIES:
+:ORIGIN: Mohsen
+:IMPORTANCE: Medium
+:REPO: this
+:BASE: this
+:FOUND: <2026-11-15 Sun 00:49>
+:END:
+----- Results: ------
+2026-11-15 --- Decided (with the user): the utilities go in *bisos.pycs*, beside =pyPkgTools.cs=; the
+work continues in that repo's AI-Activity (=bisos-pip/pycs=), not here.
+
+Why bisos.pycs: =pyPkgTools.cs= already answers pip-package questions (=pypiLatestVersion=,
+=pypiLatestVersionPlus=, =pip(x)DependenciesUpdate=), =seedPypiProc.sh= already calls it, and a pip
+package needs only =pipx install=, not full BISOS (=/bisos/core/bsip/bin= would). =bisos.common= is a
+library with no =bin/=.
+
+Two problems, plus a third between them:
+- *Local reinstall needed* (repo vs. dev-bisos3, editable). Python edits need none. Checks:
+  1. installed editable from this repo (=.dist-info/direct_url.json=), not a PyPI copy or the anon clone;
+  2. =bin/= vs. =setup.py= =scripts= (differ: regenerate =setup.py= with =pypiProc.sh= first);
+  3. =scripts= vs. =/bisos/venv/py3/devbin= symlinks (made by =seedPypiProc.sh='s =vis_devBinSymlinks=
+     after =pkgInstall edit=), and no dangling devbin links;
+  4. =setup.py= / =pyproject.toml= newer than the install's =.dist-info=; =pip check=.
+- *PyPI push needed* (repo vs. PyPI): compare the repo's files with the sha256s in bisos3's
+  =.dist-info/RECORD=; only committed and pushed changes count. No network, no labels.
+- *bisos3 update needed* (PyPI vs. bisos3): PyPI latest (=pyPkgTools.cs -i pypiLatestVersion=) vs. the
+  installed version.
+- Local versions are always 0.1 (=vis_verForSetup forLocal=), so versions cannot tell local from
+  released; contents must.
+
+Labels (git tags): not adopted. The release commits already carry the version ("0.26 pypi update."),
+so =git log --grep='pypi update' -1= finds the last release; RECORD hashes make even that unnecessary.
+
+Proposed commands (read-only): =pkgLocalStatus <repo>=, =pkgReleaseStatus <repo>=, =pkgsStatus [base]=
+(a table over =bisos-pip/*=, the action each package needs).
+
+Found while looking: =bisos.pycs= does not install editable --- its generated =setup.py= lists
+=bin/fileParamManage-k1.cs=, which no longer exists (check 2 catches exactly this; regenerate with
+=pypiProc.sh=). bisos3 has the PyPI 0.27. Prior manual survey of the push side: the AI-Outputs ledger,
+"PyPI Releases Pending --- bisos-pip Packages" (2026-11-02).
+
+2026-11-15 --- Built in =bisos-pip/pycs= WorkPlan Stage 2 (2.1-2.4; 2.5 deferred): =pipPkgsStatus.cs=
+with =pkgLocalStatus=, =pkgReleaseStatus=, =pkgsStatus=. The user has since updated all the locals.
+** -
+
+* Stage 5: <<gitGroup Consistency>> --- the Same Conventions Across a gitGroup's Repos
+
+<<Stage 5>>
+
+Goal: every repo of the bisos-pip gitGroup follows the same conventions, checked by a tool rather
+than remembered. First conventions: the root =.gitignore= and =.gitattributes=.
+
+Decided (user, 2026-11-15):
+- Build it general, for any gitGroup (option C): one engine in *bisos.gitist*; each gitGroup declares
+  its own rules.
+- A gitGroup's rules live in its [[overview repo]] (here, for bisos-pip).
+- =py3/README.rst= and =py3/_description.org= are generated, so they belong in =.gitignore= (as the
+  template has said since 2026-07-12) and should not be tracked.
+- The pattern is =pipPkgsStatus='s: a read-only status per repo and rule, with the action it implies,
+  then an explicit update that applies only the safe actions.
+
+Survey of 2026-11-15 (76 repos under =bisos-pip/=; template
+=/bisos/apps/defaults/begin/templates/moded/git/gitignore/emacs+py+tex=, in the =bisos/defaults= repo):
+- =.gitignore=: 1 equals the current template (2026-10-03); 10 are exact older template versions (8 of
+  2026-07-12, one each of 2026-09-17 and 2023-04-19); 44 share one copy matching no version in the
+  =defaults= history (likely a template from before it moved there); about 5 are unique; 16 have none.
+- =.gitattributes= (template =gitattributes/py=): 59 equal it, 17 have none.
+- The 44 still ignore =*_archive=, so a future =AI-WorkPlan.org_archive= there would be untracked
+  (template changed 2026-09-17; today's archives, in aiActivity and airflow, are tracked).
+- 57 repos track =py3/README.rst=, against the template.
+- =cbmPkgScaffold.sh= (cbm-package-authorship skill) copies =py3/.gitignore= and =py3/.gitattributes=
+  but no root ones: why the newest CBM packages (airflow, kafka, grafana, ...) have none.
+- Existing tools: =bx-gitRepos -i baseUpdateDotIgnore= (copies both templates into each repo given;
+  replaces existing ones only with =-f=) and =-i baseVerifyDotIgnore= (presence only).
+
+* Stage 5 TODOs  -- In Progress
+** +
+** TODO [#A] <<5.1>> gitGroup consistency engine in bisos.gitist :aiAndMe:
+:PROPERTIES:
+:ORIGIN: Mohsen
+:IMPORTANCE: High
+:REPO: /bisos/git/bxRepos/bisos-pip/gitist
+:BASE: this
+:FOUND: <2026-11-15 Sun>
+:END:
+Design and build in gitist's AI-Activity (its own WorkPlan TODOs). Per repo and rule, a status: =ok=,
+=missing= (add), =stale= (an exact copy of an earlier template version, found through the template's
+git history: safe to replace), =custom= (show the diff; the user decides). Then an update that applies
+only the safe actions. Rules from the gitGroup's declaration (5.2).
+----- Results: ------
+2026-11-15 --- gitist migrated to the current AI-Activity layout (it was an old-layout sub); the design
+proposal and its TODOs are in gitist's WorkPlan Stage 7 (7.1 settle the design, 7.2 build, 7.3 this
+repo's plant = 5.2, 7.4 run on bisos-pip, 7.5 docs).
+** TODO [#A] <<5.2>> bisos-pip's rules, declared in this repo :aiAndMe:
+:PROPERTIES:
+:ORIGIN: Mohsen
+:IMPORTANCE: High
+:REPO: this
+:BASE: this
+:FOUND: <2026-11-15 Sun>
+:END:
+The form follows 5.1: =py3/bin/bisos-pip_gitGroup.pcs= here, planted on gitist's =gitGroup-seed.cs=
+(gitist WorkPlan 7.3); =bx-gitRepos= stays. First rules: root =.gitignore= =
+=emacs+py+tex=, root =.gitattributes= = =gitattributes/py=; the generated =py3/README.rst= and
+=py3/_description.org= not tracked. Decide whether =py3/.gitignore= / =py3/.gitattributes= are required
+too. Later candidates: =LICENSE=, =README.org= with =:TOC:=, =py3/pypiProc.sh=, the AI-Activity files.
+----- Results: ------
+2026-11-15 --- Planted: =py3/bin/bisos-pip_gitGroup.pcs= (gitist 7.3), with the first rules: root
+=.gitignore= = =emacs+py+tex=, root =.gitattributes= = =gitattributes/py=, =notTracked= of the two
+generated files; no exclude, no custom. =py3/= dot files left out until after the first run.
+=-i gitGroup_status= (read-only, 2026-11-15): 76 members; =.gitignore= drift 49, missing 16, stale 10;
+=.gitattributes= missing 17; 57 track the generated files. Applying it is gitist 7.4 (with 5.3).
+** TODO [#B] <<5.3>> Untrack the generated README.rst and _description.org in 57 repos :aiAndMe:
+:PROPERTIES:
+:ORIGIN: Mohsen
+:IMPORTANCE: Medium
+:REPO: bisos-pip/* (57 repos)
+:BASE: this
+:FOUND: <2026-11-15 Sun>
+:END:
+=git rm --cached py3/README.rst py3/_description.org= after the =.gitignore= update, one commit per
+repo. Mind: =setup.py='s =data_files= lists both, so a fresh clone needs =pypiProc.sh -i fullPrep=
+(=pkgReInstall= runs it) before a plain =pip install -e= --- check that this holds.
+----- Results: ------
+** TODO [#C] <<5.4>> =cbmPkgScaffold.sh=: also install the root .gitignore and .gitattributes :ai:
+:PROPERTIES:
+:ORIGIN: Mohsen
+:IMPORTANCE: Low
+:REPO: aiTemplates (mother/_skills/cbm-package-authorship/tools)
+:BASE: this
+:FOUND: <2026-11-15 Sun>
+:END:
+New CBM packages get no root dot files today. The 5.1 check would catch it; this stops it at the source.
+----- Results: ------
+** TODO [#A] <<5.5>> bisos.overview as a complete pip package :aiAndMe:
+:PROPERTIES:
+:ORIGIN: Mohsen
+:IMPORTANCE: High
+:REPO: this
+:BASE: this
+:FOUND: <2026-11-15 Sun>
+:END:
+Like every other bisos-pip repo: =py3/pypiProc.sh=, =py3/setup.py=, panels, =py3/bisos/overview/=; it
+then installs =py3/bin/bisos-pip_gitGroup.pcs= on PATH.
+----- Results: ------
+2026-11-15 --- Done (user to commit; no PyPI release yet: =bisos.overview= is free on PyPI).
+- Scaffolded with the cbm-package-authorship skill's =cbmPkgScaffold.sh overview kafka= (the generic
+  parts only: =py3/= packaging files, =pypiProc.sh=, =pyproject.toml=, =setup.py=, the license, the
+  namespace =py3/bisos/__init__.py=, an empty =py3/bisos/overview/__init__.py=, the panel tree; the
+  root =_objectType_= etc. existed and were left alone).
+- Rewritten by hand: the panel's Overview (it was kafka's text, renamed) and a new =README.org=
+  (overview repo, gitGroup, the bisos-pip rules and the plant's commands, install); =README.md=
+  (just "# overview") deleted, as other repos have =README.org= only. =py3/panels/bisos.overview/README/=
+  links to it.
+- =pypiProc.sh -i pkgReInstall edit /bisos/venv/py3/dev-bisos3=: =setup.py= regenerated (=requires=:
+  =bisos=, =bisos.gitist=; =scripts=: =bin/bisos-pip_gitGroup.pcs=), installed editable.
+- Checked: =pipPkgsStatus.cs -i pkgLocalStatus= =ok=; =pkgReleaseStatus= =uncommitted= (the new
+  files); =bisos-pip_gitGroup.pcs= on PATH (devbin) and runs from anywhere.
+** -
+
+
+
+
+# Local Variables:
+# eval: (setq-local toc-org-max-depth 4)
+# eval: (setq-local org-log-done 'time)
+# End:

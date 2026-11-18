@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+
+""" #+begin_org
+* ~[Summary]~ :: A =PlantedCmndService= declaring the bisos-pip gitGroup: its members and their rules.
+#+end_org """
+
+""" #+begin_org
+* [[elisp:(org-cycle)][| ~Description~ |]] :: Planted on bisos.gitist's =gitGroup-seed.cs= (gitist WorkPlan Stage 7).
+Every git repo under =/bisos/git/bxRepos/bisos-pip= is a member. The root =.gitignore= and
+=.gitattributes= come from the same templates =bx-gitRepos -i baseUpdateDotIgnore= copies; the
+generated =py3/README.rst= and =py3/_description.org= are not tracked. No member is custom.
+- =bisos-pip_gitGroup.pcs -i gitGroup_status=  --- read-only
+- =bisos-pip_gitGroup.pcs -i gitGroup_update=  --- writes missing/stale files; never stages
+Decided in bisos-pip/overview WorkPlan Stage 5 (5.2).
+#+end_org """
+
+from bisos.gitist import gitGroup_seed  # noqa: F401  _atExit_
+
+from bisos.gitist import gitGroup_seedInfo
+fileFromTemplate = gitGroup_seedInfo.fileFromTemplate
+notTracked = gitGroup_seedInfo.notTracked
+
+templates = "/bisos/apps/defaults/begin/templates/moded/git"
+
+gitGroup_seedInfo.setup(
+    gitGroupName="bisos-pip",
+    base="/bisos/git/bxRepos/bisos-pip",
+    exclude=[],
+    rules=[
+        fileFromTemplate(".gitignore", f"{templates}/gitignore/emacs+py+tex"),
+        fileFromTemplate(".gitattributes", f"{templates}/gitattributes/py"),
+        notTracked(["py3/README.rst", "py3/_description.org"], name="generated"),
+    ],
+)
